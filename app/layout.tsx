@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Jura } from 'next/font/google'
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+// FONT-FAMILY
+const jura = Jura({ 
+  subsets: ['latin'],
+  weight:["400"],
+  variable: '--font-jura',
 });
+
 
 export const metadata: Metadata = {
   title: "Cinemart",
@@ -22,11 +26,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          "min-h-screen",
+          jura.variable,
         )}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
