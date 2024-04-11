@@ -7,7 +7,7 @@ import { Jura } from 'next/font/google'
 // FONT-FAMILY
 const jura = Jura({ 
   subsets: ['latin'],
-  weight:["400"],
+  weight:["700"],
   variable: '--font-jura',
 });
 
