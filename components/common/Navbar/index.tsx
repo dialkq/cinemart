@@ -4,6 +4,8 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { PiFilmReel } from "react-icons/pi";
 import ThemeButton from "@/components/common/Button/ThemeButton";
+import { BiCart } from "react-icons/bi";
+
 
 export function Navbar() {
   const { setTheme } = useTheme();
@@ -17,7 +19,8 @@ export function Navbar() {
         </h1>
       </div>
       {/* TOOGLE THEME */}
-      <div className="">
+      <div className="flex">
+        <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
         <ThemeButton />
       </div>
     </div>
