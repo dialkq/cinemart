@@ -27,7 +27,7 @@ export default function RootLayout({
         className={cn(
           "w-full min-h-screen mx-auto bg-gradient-to-tr from-sky-100 via-neutral-50 to-sky-100 dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900",
           jura.variable
-        )}
+        )} 
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}

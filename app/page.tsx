@@ -11,7 +11,7 @@ export default function Home() {
       </div>
       {/* MAPING GENRE TABS */}
       <div
-        className="w-full p-3 md:p-4 lg:px-10 
+        className="w-11/12 mx-auto my-5
       grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 
       gap-x-4 gap-y-3 md:gap-x-4 md:gap-y-3 lg:gap-x-8 lg:gap-y-4"
       >
