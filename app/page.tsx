@@ -1,11 +1,11 @@
 import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
-
+import CarouselCard from "@/components/common/Carousel";
 export default function Home() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
 
   return (
-    <div className="w-full min-h-screen mx-auto">
+    <div className="w-full flex flex-col min-h-screen mx-auto">
       <div className="w-full mx-auto">
         <Navbar />
       </div>
@@ -18,6 +18,10 @@ export default function Home() {
         {genres.map((genre) => (
           <GenreTabs key={genre} genre={genre} />
         ))}
+      </div>
+      <div className="w-11/12 my-3 md:my-5 lg:my-10 md:w-9/12 lg:w-10/12 mx-auto">
+        <p className="text-center font-bold font-mono text-3xl md:text-4xl">~Now Playing~</p>
+        <CarouselCard />
       </div>
     </div>
   );
