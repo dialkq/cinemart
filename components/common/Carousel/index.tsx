@@ -19,7 +19,7 @@ export default function CarouselCard() {
       className="w-full mx-auto"
     >
       <CarouselContent className="">
-        {Array.from({ length: 10 }).map((_, index) => (
+        {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <div className="p-5 md:p-10 lg:p-10">
               <Card>
