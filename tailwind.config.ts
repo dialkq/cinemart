@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         jura: ['var(--font-jura)'],
+        patua: ["Patua One", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

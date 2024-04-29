@@ -10,12 +10,16 @@ import {
 import axios from "axios";
 import { useQuery } from "react-query";
 import Image from "next/image";
+import React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 interface Movie {
   poster_path: string;
   title: string;
 }
 export default function CarouselCard() {
+  // FETCH
   const fetchMovies = async () => {
     const options = {
       method: "GET",
@@ -32,8 +36,12 @@ export default function CarouselCard() {
     );
     return response.data;
   };
-
+  
   const { data, isLoading, error } = useQuery("movies", fetchMovies);
+  // AUTOPLAY
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false })
+  )
   if (isLoading) return "Loading Movie...";
 
   return (
@@ -42,16 +50,17 @@ export default function CarouselCard() {
         align: "start",
         loop: true,
       }}
-      className="w-full mx-auto"
+      plugins={[plugin.current]}
+      className="w-full mx-auto my-3 md:my-8 lg:my-10"
     >
       <CarouselContent className="">
-        {data.results.slice(0, 10).map((movie: Movie, index: number) => (
+        {data.results.slice(0, 100).map((movie: Movie, index: number) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-5 my-3bg-red-100">
+            <div className="p-5">
               <Card>
                 <CardContent className="cursor-pointer flex p-0">
                   <Image
-                    className="rounded-md"
+                    className="flex rounded-md my-auto"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                     width={500}
