@@ -3,8 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { jura } from "./font";
-
-// FONT-FAMILY
+import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "Cinemart",
@@ -27,6 +26,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

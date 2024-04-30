@@ -22,9 +22,10 @@ export default function Home() {
         </div>
         {/* MAPING GENRE TABS */}
         <div
-          className="w-11/12 mx-auto my-3 md:my-4 lg:my-5
-      grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4
-      gap-x-5 gap-y-3 md:gap-x-8 md:gap-y-3 lg:gap-x-24 lg:gap-y-4"
+          className="w-full mx-auto py-5 px-5 md:py-5 md:px-10 lg:py-5 lg:px-16 bg-sky-50 dark:bg-slate-900
+           sticky top-0 z-50
+          grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4
+        gap-x-5 gap-y-3 md:gap-x-8 md:gap-y-3 lg:gap-x-24 lg:gap-y-4"
         >
           {genres.map((genre) => (
             <GenreTabs key={genre} genre={genre} />
@@ -32,7 +33,7 @@ export default function Home() {
         </div>
         <div className="w-11/12 my-3 md:my-5 lg:my-10 md:w-9/12 lg:w-10/12 mx-auto">
           <p className="text-center font-bold font-patua text-3xl md:text-4xl lg:text-5xl my-3">
-            Now Playing
+            New Release
           </p>
           <CarouselCard />
         </div>

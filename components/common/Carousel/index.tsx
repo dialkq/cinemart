@@ -11,8 +11,9 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import Image from "next/image";
 import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import Lottie from "lottie-react";
+import loading from "@/public/animation/loading.json"
 
 interface Movie {
   poster_path: string;
@@ -36,13 +37,16 @@ export default function CarouselCard() {
     );
     return response.data;
   };
-  
+
   const { data, isLoading, error } = useQuery("movies", fetchMovies);
   // AUTOPLAY
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
-  )
-  if (isLoading) return "Loading Movie...";
+  );
+  // HANDLE LOADING
+  if (isLoading)
+    return <Lottie className="h-40 w-40 md:w-60 md:h-60 lg:w-72 lg:h-72 mx-auto" animationData={loading} />;
+
 
   return (
     <Carousel
@@ -54,13 +58,13 @@ export default function CarouselCard() {
       className="w-full mx-auto my-3 md:my-8 lg:my-10"
     >
       <CarouselContent className="">
-        {data.results.slice(0, 100).map((movie: Movie, index: number) => (
+        {data.results.slice(0, 12).map((movie: Movie, index: number) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <div className="p-5">
               <Card>
-                <CardContent className="cursor-pointer flex p-0">
+                <CardContent className="flex flex-col cursor-pointer p-0">
                   <Image
-                    className="flex rounded-md my-auto"
+                    className="rounded-md my-auto"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                     width={500}
