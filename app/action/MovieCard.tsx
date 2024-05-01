@@ -1,17 +1,7 @@
-"use client";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import axios from "axios";
 import { useQuery } from "react-query";
 import Image from "next/image";
 import React from "react";
-import Autoplay from "embla-carousel-autoplay";
 import Lottie from "lottie-react";
 import loading from "@/public/animation/loading.json";
 
@@ -19,9 +9,10 @@ interface Movie {
   poster_path: string;
   title: string;
   adult: boolean;
+  id: number;
 }
-export default function CarouselCard() {
-  // FETCH
+
+const MovieCard = () => {
   const fetchMovies = async () => {
     const options = {
       method: "GET",
@@ -33,17 +24,13 @@ export default function CarouselCard() {
     };
 
     const response = await axios.get(
-      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      "https://api.themoviedb.org/3/discover/movie?include_adult=true&language=en-US&page=1&sort_by=popularity.desc&without_genres=28",
       options
     );
     return response.data;
   };
 
   const { data, isLoading, error } = useQuery("movies", fetchMovies);
-  // AUTOPLAY
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
-  );
   // HANDLE LOADING
   if (isLoading)
     return (
@@ -54,19 +41,10 @@ export default function CarouselCard() {
     );
 
   return (
-    <Carousel
-      opts={{
-        align: "start",
-        loop: true,
-      }}
-      plugins={[plugin.current]}
-      className="w-full mx-auto my-4 md:my-5 lg:my-6"
-    >
-      <CarouselContent className="">
-        {data.results.slice(0, 12).map((movie: Movie, index: number) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <Card className="flex flex-col bg-transparent border-none shadow-transparent py-1 px-8 md:py-2 md:px-8 lg:py-3 lg:px-12">
-              <CardContent className="flex cursor-pointer p-0">
+    <div className="mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+       {data.results.map((movie: Movie, key={}) => (
+            <div key={movie.id}>
+              <div className="flex cursor-pointer p-0">
                 <Image
                   className="rounded-md my-auto mx-auto"
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -75,7 +53,7 @@ export default function CarouselCard() {
                   height={400}
                   priority={false}
                 />
-              </CardContent>
+              </div>
 
               {/* TITLE */}
               <div className="flex flex-col w-fit mx-auto my-1 md:my-2 lg:my-3">
@@ -90,25 +68,23 @@ export default function CarouselCard() {
               </div>
 
               {/* PRICE */}
-              <p className="text-center font-lugrasimo italic font-semibold">
+              <p className="text-center font-lugrasimo italic font-semibold text-xs md:text-sm lg:text-base">
                 {movie.adult ? "Rp55.000" : "Rp35.000"}
               </p>
 
               {/* ADD TO CART */}
               <div
-                className="mx-auto w-fit py-2 px-3 md:py-3 md:px-6 lg:py-3 lg:px-8
-                rounded-xl bg-green-400 mt-5 cursor-pointer hover:bg-green-500"
+                className="mx-auto w-fit py-2 px-3 md:py-3 md:px-5 lg:py-3 lg:px-5
+                rounded-xl bg-green-400 mt-2 mb-1 md:mb-4 lg:mb-10 cursor-pointer hover:bg-green-500"
               >
-                <p className="font-lato font-extrabold text-white text-sm md:text-base tracking-wider">
+                <p className="font-lato font-extrabold text-white text-xs md:text-sm tracking-wider">
                   Add to cart
                 </p>
               </div>
-            </Card>
-          </CarouselItem>
+            </div>
         ))}
-      </CarouselContent>
-      <CarouselPrevious className="hidden md:flex" />
-      <CarouselNext className="hidden md:flex" />
-    </Carousel>
+    </div>
   );
-}
+};
+
+export default MovieCard;

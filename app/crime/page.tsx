@@ -1,7 +1,7 @@
 import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
 
-export default function Home() {
+export default function crime() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
 
   return (

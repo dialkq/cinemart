@@ -22,7 +22,12 @@ export function Navbar() {
 
       {/* TOOGLE THEME */}
       <div className="flex">
-        <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
+        <div className="flex relative justify-center items-center">
+          <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
+          <p className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black absolute top-0 right-4 text-xs">
+            0
+          </p>
+        </div>
         <ThemeButton />
       </div>
     </div>

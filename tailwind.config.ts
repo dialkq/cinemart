@@ -21,6 +21,9 @@ const config = {
       fontFamily: {
         jura: ['var(--font-jura)'],
         patua: ["Patua One", "serif"],
+        lato: ["Lato", "sans-serif"],
+        lugrasimo: ["Lugrasimo", "cursive"],
+        changa: ["Changa", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
