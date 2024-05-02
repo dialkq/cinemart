@@ -73,7 +73,7 @@ export default function CarouselCard() {
                   alt={movie.title}
                   width={400}
                   height={400}
-                  priority={false}
+                  priority={true}
                 />
               </CardContent>
 

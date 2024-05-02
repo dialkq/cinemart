@@ -4,7 +4,6 @@ import { Navbar } from "@/components/common/Navbar";
 import MovieCard from "./MovieCard";
 import { QueryClientProvider, QueryClient } from "react-query";
 
-const queryClient = new QueryClient();
 export default function action() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
 
