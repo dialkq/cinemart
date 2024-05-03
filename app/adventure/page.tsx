@@ -3,15 +3,28 @@ import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
 import MovieCard from "./MovieCard";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { IoIosArrowDropupCircle } from "react-icons/io";
 
 export default function adventure() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
+  // SCROLL TO TOP
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <QueryClientProvider client={new QueryClient()}>
-      <div className="w-full min-h-screen mx-auto">
+      <div className="w-full flex flex-col min-h-screen mx-auto">
         <div className="w-full mx-auto">
           <Navbar />
+        </div>
+        <div 
+        onClick={scrollToTop}
+        className="hidden md:flex md:fixed cursor-pointer md:bottom-8 md:right-2 lg:bottom-10 lg:right-5">
+          <IoIosArrowDropupCircle className="w-10 h-10 lg:w-12 lg:h-12" />
         </div>
         {/* MAPING GENRE TABS */}
         <div
@@ -27,6 +40,7 @@ export default function adventure() {
         <div className="w-11/12 mx-auto my-10">
           <MovieCard />
         </div>
+        
       </div>
     </QueryClientProvider>
   );
