@@ -3,14 +3,10 @@ import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
 import CarouselCard from "@/components/common/Carousel";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "react-query";
 
-const queryClient = new QueryClient();
 export default function Home() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
 

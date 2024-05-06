@@ -40,7 +40,7 @@ export default function CarouselCard() {
   };
 
   const { data, isLoading, error } = useQuery("movies", fetchMovies);
-  // AUTOPLAY
+  // AUTOPLAY FROM SHADNCN/UI
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );

@@ -6,7 +6,8 @@ import { PiFilmReel } from "react-icons/pi";
 import ThemeButton from "@/components/common/Button/ThemeButton";
 import { BiCart } from "react-icons/bi";
 import Link from "next/link";
-export function Navbar() {
+import { slide as Menu } from "react-burger-menu";
+export function Navbar(this: any) {
   const { setTheme } = useTheme();
 
   return (
@@ -20,8 +21,21 @@ export function Navbar() {
         </div>
       </Link>
 
-      {/* CART AND TOOGLE THEME */}
-      <div className="flex">
+      {/* MOBILE MENU */}
+      <div className="flex my-auto md:hidden z-50">
+        <div className="flex relative justify-center items-center">
+          <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
+          <p className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black absolute top-0 right-4 text-xs">
+            0
+          </p>
+        </div>
+        <Menu pageWrapId={"page-wrap"} width={200} right className="text-black">
+          <ThemeButton />
+        </Menu>
+      </div>
+
+      {/* DEKSTOP MENU, AUTH, CART AND TOOGLE THEME */}
+      <div className="hidden md:flex">
         <div className="flex relative justify-center items-center">
           <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
           <p className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black absolute top-0 right-4 text-xs">
