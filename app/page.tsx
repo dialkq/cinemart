@@ -19,7 +19,7 @@ export default function Home() {
         {/* MAPING GENRE TABS */}
         <div
           className="w-full mx-auto py-5 px-5 md:py-5 md:px-10 lg:py-5 lg:px-16 bg-sky-50 dark:bg-slate-900
-           sticky top-0 z-50
+           sticky top-0 z-10
           grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4
         gap-x-5 gap-y-3 md:gap-x-8 md:gap-y-3 lg:gap-x-24 lg:gap-y-4"
         >
