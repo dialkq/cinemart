@@ -3,10 +3,34 @@ import { Navbar } from "@/components/common/Navbar";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signInWithGoogle } from "../../firebase/googleConfig";
+import { MouseEvent, FormEvent } from "react";
 
-const signIn = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
+const Page = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  // HANDLE GOOGLE LOGIN
+  const handleGoogleSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const user = await signInWithGoogle();
+      if (user) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ email: user.email, displayName: user.displayName })
+        );
+        router.push("/");
+      } else {
+        alert("Gagal login dengan Google. Silakan coba lagi.");
+      }
+    } catch (error) {
+      alert("Gagal login. Silakan coba lagi.");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="w-full">
@@ -64,7 +88,7 @@ const signIn = () => {
                 <button
                   className="text-xs md:text-sm text-blue-600 text-primary-600 hover:underline dark:text-primary-500"
                   type="button"
-                  // onClick={handleGoogleSignIn}
+                  onClick={handleGoogleSignIn}
                 >
                   Sign in with Google
                 </button>
@@ -102,4 +126,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default Page;

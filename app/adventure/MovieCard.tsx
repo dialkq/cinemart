@@ -78,7 +78,7 @@ const MovieCard = () => {
                     alt={movie.title}
                     width={400}
                     height={400}
-                    priority={false}
+                    priority={true}
                   />
                 </div>
 
