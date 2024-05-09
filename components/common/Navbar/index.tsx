@@ -76,7 +76,7 @@ export function Navbar(this: any) {
             </div>
             {/* AUTH  */}
             <div
-              className="py-3 pl-3"
+              className="py-3 pl-3 hover:opacity-80"
               onClick={user ? handleLogout : undefined}
             >
               <Link href={authLink} className="my-auto">
@@ -97,7 +97,7 @@ export function Navbar(this: any) {
         {/* DISPLAY NAME */}
         <p className="my-auto font-mono font-semibold">{user?.displayName}</p>
         {/* AUTH */}
-        <div className="my-auto" onClick={user ? handleLogout : undefined}>
+        <div className="my-auto hover:opacity-80" onClick={user ? handleLogout : undefined}>
           <Link href={authLink}>
             <div className="flex">
               <p className="font-mono font-semibold text-base">{authText}</p>
