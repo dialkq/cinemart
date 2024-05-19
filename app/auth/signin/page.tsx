@@ -93,7 +93,7 @@ const Page = () => {
                   Sign in with Google
                 </button>
                 <Link
-                  href="/auth/forgot-password"
+                  href="/auth/forgotPassword"
                   className="mt-5 md:mt-0 text-xs md:text-sm text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
