@@ -4,9 +4,21 @@ import { Navbar } from "@/components/common/Navbar";
 import MovieCard from "./MovieCard";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { IoIosArrowDropupCircle } from "react-icons/io";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function adventure() {
+export default function Adventure() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
+  const router = useRouter();
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+
+    if (!userData) {
+      router.push("/auth/signin");
+    }
+  }, [router]);
+  
   // SCROLL TO TOP
   const scrollToTop = () => {
     window.scrollTo({
@@ -21,9 +33,10 @@ export default function adventure() {
         <div className="w-full mx-auto">
           <Navbar />
         </div>
+        {/* SCROLL TO TOP ARROW */}
         <div 
         onClick={scrollToTop}
-        className="hidden md:flex md:fixed cursor-pointer md:bottom-8 md:right-2 lg:bottom-10 lg:right-5">
+        className="flex fixed cursor-pointer bottom-2 right-1 md:bottom-8 md:right-2 lg:bottom-10 lg:right-5">
           <IoIosArrowDropupCircle className="w-10 h-10 lg:w-12 lg:h-12" />
         </div>
         {/* MAPING GENRE TABS */}
@@ -40,7 +53,6 @@ export default function adventure() {
         <div className="w-11/12 mx-auto my-10">
           <MovieCard />
         </div>
-        
       </div>
     </QueryClientProvider>
   );

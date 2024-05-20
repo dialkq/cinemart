@@ -2,13 +2,21 @@
 import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
 import CarouselCard from "@/components/common/Carousel";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
+  const router = useRouter();
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+
+    if (!userData) {
+      router.push("/auth/signin");
+    }
+  }, [router]);
 
   return (
     <QueryClientProvider client={new QueryClient()}>

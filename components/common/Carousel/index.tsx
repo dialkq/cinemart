@@ -14,6 +14,7 @@ import React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import Lottie from "lottie-react";
 import loading from "@/public/animation/loading.json";
+import AddToCart from "../Button/AddToCart";
 
 interface Movie {
   poster_path: string;
@@ -95,14 +96,7 @@ export default function CarouselCard() {
               </p>
 
               {/* ADD TO CART */}
-              <div
-                className="mx-auto w-fit py-2 px-3 md:py-3 md:px-6 lg:py-3 lg:px-8
-                rounded-xl bg-green-400 mt-5 cursor-pointer hover:bg-green-500"
-              >
-                <p className="font-lato font-extrabold text-white text-sm md:text-base tracking-wider">
-                  Add to cart
-                </p>
-              </div>
+             <AddToCart />
             </Card>
           </CarouselItem>
         ))}

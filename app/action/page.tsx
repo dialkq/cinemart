@@ -3,9 +3,19 @@ import GenreTabs from "@/components/common/GenreTabs";
 import { Navbar } from "@/components/common/Navbar";
 import MovieCard from "./MovieCard";
 import { QueryClientProvider, QueryClient } from "react-query";
-
-export default function action() {
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+export default function Action() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
+  const router = useRouter();
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+
+    if (!userData) {
+      router.push("/auth/signin");
+    }
+  }, [router]);
 
   return (
     <QueryClientProvider client={new QueryClient()}>
