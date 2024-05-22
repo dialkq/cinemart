@@ -96,7 +96,7 @@ export default function CarouselCard() {
               </p>
 
               {/* ADD TO CART */}
-             <AddToCart />
+             <AddToCart movie={movie} />
             </Card>
           </CarouselItem>
         ))}

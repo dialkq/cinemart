@@ -7,9 +7,10 @@ import ThemeButton from "@/components/common/Button/ThemeButton";
 import { BiCart } from "react-icons/bi";
 import Link from "next/link";
 import { Divide as Hamburger } from "hamburger-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FiLogIn } from "react-icons/fi";
 import { usePathname, useRouter } from "next/navigation";
+import { useCartContext } from "@/context/Cart";
 
 type User = {
   email: string;
@@ -21,7 +22,7 @@ export function Navbar(this: any) {
   const pathname = usePathname();
   const [user, setUser] = useState<User>(null);
   const router = useRouter();
- 
+  const { cart } = useCartContext();
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -116,7 +117,7 @@ export function Navbar(this: any) {
             className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black
       absolute top-0 right-0 text-xs"
           >
-            0
+            {cart.length}
           </p>
         </div>
         <ThemeButton />
