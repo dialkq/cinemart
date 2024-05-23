@@ -27,7 +27,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ movie }) => {
                 rounded-xl bg-green-400 mt-2 mb-1 md:mb-4 lg:mb-10 cursor-pointer hover:bg-green-500 active:bg-green-600 active:ring active:ring-green-800"
     >
       <p className="font-lato font-extrabold text-white text-xs md:text-sm tracking-wider">
-        Add to cart
+        Add to cart.
       </p>
     </div>
   );
