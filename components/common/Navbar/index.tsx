@@ -11,6 +11,7 @@ import { useState, useEffect, useContext } from "react";
 import { FiLogIn } from "react-icons/fi";
 import { usePathname, useRouter } from "next/navigation";
 import { useCartContext } from "@/context/Cart";
+import CartShop from "../CartShop";
 
 type User = {
   email: string;
@@ -22,7 +23,6 @@ export function Navbar(this: any) {
   const pathname = usePathname();
   const [user, setUser] = useState<User>(null);
   const router = useRouter();
-  const { cart } = useCartContext();
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -56,12 +56,7 @@ export function Navbar(this: any) {
 
       {/* MOBILE MENU */}
       <div className="flex my-auto md:hidden z-50 relative">
-        <div className="flex relative justify-center items-center">
-          <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6 mx-5" />
-          <p className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black absolute top-0 right-4 text-xs">
-            0
-          </p>
-        </div>
+        <CartShop />
         <Hamburger toggled={isOpen} toggle={setOpen} size={20} rounded />
         {isOpen && (
           <div className="fixed z-40 top-0 w-2/3 h-full bg-sky-50 dark:bg-slate-900 opacity-95 flex flex-col left-0">
@@ -109,17 +104,8 @@ export function Navbar(this: any) {
             </div>
           </Link>
         </div>
-
         {/* CART */}
-        <div className="flex relative justify-center items-center">
-          <BiCart className="font-extrabold my-auto h-5 w-5 md:w-6 md:h-6" />
-          <p
-            className="font-bold font-sans bg-slate-900 dark:bg-sky-50 p-0.5 rounded-full text-white dark:text-black
-      absolute top-0 right-0 text-xs"
-          >
-            {cart.length}
-          </p>
-        </div>
+        <CartShop />
         <ThemeButton />
       </div>
     </div>

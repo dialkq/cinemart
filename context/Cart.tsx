@@ -1,15 +1,17 @@
 "use client";
 import { createContext, useState, useContext } from "react";
 
-interface CartContextProps {
-  cart: string[];
-  setCart: React.Dispatch<React.SetStateAction<string[]>>;
+interface CartItem {
+  price: number;
+  adult: boolean;
+  title: string;
+  poster_path: string;
 }
 
-const CartContext = createContext<CartContextProps | undefined>(undefined);
+const CartContext = createContext<{ cart: CartItem[]; setCart: React.Dispatch<React.SetStateAction<CartItem[]>> } | undefined>(undefined);
 
 export default function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<string[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   return (
     <CartContext.Provider value={{ cart, setCart }}>
