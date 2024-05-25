@@ -59,7 +59,7 @@ const CartShop = () => {
               Rp{cart.reduce((total, movie) => total + movie.price, 0)}
             </p>
             <Button className="bg-green-400 w-full md:w-11/12 mx-auto">
-              Checkout
+              Checkoutt
             </Button>
           </DrawerFooter>
         </DrawerContent>
