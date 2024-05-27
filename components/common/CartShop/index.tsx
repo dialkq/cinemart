@@ -10,9 +10,15 @@ import Image from "next/image";
 import { useCartContext } from "@/context/Cart";
 import { BiCart } from "react-icons/bi";
 import { Button } from "@/components/ui/button";
+import { MdDelete } from "react-icons/md";
 
 const CartShop = () => {
-  const { cart } = useCartContext();
+  const { cart, setCart } = useCartContext();
+
+  const handleRemove = (title: string) => {
+    setCart(cart.filter((movie) => movie.title !== title));
+  };
+
   return (
     <div className="flex">
       <Drawer>
@@ -46,17 +52,24 @@ const CartShop = () => {
                     {movie.title}
                   </p>
                 </div>
-                <div className="my-auto">
-                  <p className="text-center font-lugrasimo italic font-semibold">
+                <div className="flex my-auto">
+                  <p className="text-center font-lugrasimo italic font-semibold my-auto">
                     {movie.adult ? "Rp55.000" : "Rp35.000"}
                   </p>
+                  <MdDelete
+                    className="text-red-500 hover:text-red-600 focus:text-red-700 cursor-pointer text-lg ml-5 my-auto"
+                    onClick={() => handleRemove(movie.title)}
+                  />
                 </div>
               </div>
             ))}
           </DrawerHeader>
           <DrawerFooter>
-            <p className="font-mono text-base md:text-lg font-semibold text-center my-2">
-              Rp{cart.reduce((total, movie) => total + movie.price, 0)}
+            <p className="font-mono font-semibold text-center my-2">
+              Total: Rp
+              {cart
+                .reduce((total, movie) => total + movie.price, 0)
+                .toLocaleString("id-ID")}
             </p>
             <Button className="bg-green-400 w-full md:w-11/12 mx-auto">
               Checkout

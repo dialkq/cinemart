@@ -24,6 +24,8 @@ const config = {
         lato: ["Lato", "sans-serif"],
         lugrasimo: ["Lugrasimo", "cursive"],
         changa: ["Changa", "sans-serif"],
+        titilium: ["Titillium Web", "sans-serif"],
+        cinzel: ["Cinzel Decorative", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

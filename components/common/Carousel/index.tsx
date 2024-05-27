@@ -69,7 +69,7 @@ export default function CarouselCard() {
             <Card className="flex flex-col bg-transparent border-none shadow-transparent py-1 px-8 md:py-2 md:px-8 lg:py-3 lg:px-12">
               <CardContent className="flex cursor-pointer p-0">
                 <Image
-                  className="rounded-md my-auto mx-auto"
+                  className="rounded-md my-auto mx-auto hover:scale-125 transition duration-300 ease-in-out"
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                   width={400}

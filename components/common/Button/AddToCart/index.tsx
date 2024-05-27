@@ -1,4 +1,4 @@
-import { useCartContext } from '@/context/Cart';
+import { useCartContext } from "@/context/Cart";
 
 interface Movie {
   title: string;
@@ -14,10 +14,20 @@ const AddToCart: React.FC<AddToCartProps> = ({ movie }) => {
   const { cart, setCart } = useCartContext();
 
   const addToCart = () => {
-    const newCart = [...cart, { title: movie.title, poster_path: movie.poster_path, price: movie.adult ? 55000 : 35000, adult: movie.adult }];
-    setCart(newCart);
-
-    console.log("DATANYA", newCart);
+    if (cart.some((item) => item.title === movie.title)) {
+      alert("Anda tidak bisa memesan lebih dari sekali dari film yang sama");
+    } else {
+      const newCart = [
+        ...cart,
+        {
+          title: movie.title,
+          poster_path: movie.poster_path,
+          price: movie.adult ? 55000 : 35000,
+          adult: movie.adult
+        },
+      ];
+      setCart(newCart);
+    }
   };
 
   return (

@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import loading from "@/public/animation/loading.json";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import AddToCart from "@/components/common/Button/AddToCart";
 
 interface Movie {
   poster_path: string;
@@ -73,7 +74,7 @@ const MovieCard = () => {
               <div key={movie.id}>
                 <div className="flex cursor-pointer p-0">
                   <Image
-                    className="rounded-md my-auto mx-auto"
+                    className="rounded-md my-auto mx-auto hover:scale-110 transition duration-300 ease-in-out"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                     width={400}
@@ -100,14 +101,7 @@ const MovieCard = () => {
                 </p>
 
                 {/* ADD TO CART */}
-                <div
-                  className="mx-auto w-fit py-2 px-3 md:py-3 md:px-4 lg:py-3 lg:px-5
-                  rounded-xl bg-green-400 mt-2 mb-1 md:mb-4 lg:mb-10 cursor-pointer hover:bg-green-500"
-                >
-                  <p className="font-lato font-extrabold text-white text-xs md:text-sm tracking-wider">
-                    Add to cart
-                  </p>
-                </div>
+                <AddToCart movie={movie} />
               </div>
             ))
           )}
