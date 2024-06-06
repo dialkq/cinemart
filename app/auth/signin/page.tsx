@@ -103,7 +103,8 @@ const Page = () => {
               {/* SUBMIT BUTTON */}
               <button
                 type="submit"
-                className="w-full text-white font-mono text-base bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:outline-none focus:ring-indigo-700 font-medium rounded-lg py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                disabled
+                className="cursor-not-allowed w-full text-white font-mono text-base bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:outline-none focus:ring-indigo-700 font-medium rounded-lg py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 {isLoading ? "Loading..." : "Submit"}
               </button>
