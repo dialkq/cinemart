@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="w-11/12 md:w-9/12 lg:w-10/12 my-3 md:my-5 lg:my-10 mx-auto">
           <p className="text-center font-cinzel text-3xl md:text-4xl lg:text-5xl">
-            Now Playingg
+            Now Playinggg
           </p>
           <CarouselCard />
         </div>
