@@ -34,7 +34,7 @@ export default function CarouselCard() {
     };
 
     const response = await axios.get(
-      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      "api/3/movie/now_playing?language=en-US&page=1",
       options
     );
     return response.data;

@@ -32,7 +32,7 @@ const MovieCard = () => {
 
   const fetchMovies = async (page: number) => {
     const res = await axios.get<ApiResponse>(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=true&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=28`,
+      `api/3/discover/movie?include_adult=true&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=28`,
       {
         headers: {
           accept: "application/json",

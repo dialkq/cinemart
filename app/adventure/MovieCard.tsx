@@ -35,7 +35,7 @@ const MovieCard = () => {
     };
 
     const response = await axios.get<ApiResponse>(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=true&language=en-US&page=${pageParam}&sort_by=popularity.desc&with_genres=12`,
+      `api/3/discover/movie?include_adult=true&language=en-US&page=${pageParam}&sort_by=popularity.desc&with_genres=12`,
       options
     );
     return { data: response.data, nextPage: pageParam + 1 };
