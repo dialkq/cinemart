@@ -10,13 +10,14 @@ export default function Home() {
   const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
   const router = useRouter();
 
-  useEffect(() => {
-    const userData = localStorage.getItem("user");
+  // TAKEDOWN FUNGSI HARUS LOGIN
+  // useEffect(() => {
+  //   const userData = localStorage.getItem("user");
 
-    if (!userData) {
-      router.push("/auth/signin");
-    }
-  }, [router]);
+  //   if (!userData) {
+  //     router.push("/auth/signin");
+  //   }
+  // }, [router]);
 
   return (
     <QueryClientProvider client={new QueryClient()}>
