@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
-  const genres = ["Action", "Adventure", "Crime", "Romance"].sort();
+  const genres = ["Popular Movie", "Favorite"].sort();
   const router = useRouter();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home() {
         <div
           className="w-full mx-auto py-5 px-5 md:py-5 md:px-10 lg:py-5 lg:px-16 bg-sky-50 dark:bg-slate-900
            sticky top-0 z-10
-          grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4
+          grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2
         gap-x-5 gap-y-3 md:gap-x-8 md:gap-y-3 lg:gap-x-24 lg:gap-y-4"
         >
           {genres.map((genre) => (

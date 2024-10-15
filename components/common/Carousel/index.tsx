@@ -15,6 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Lottie from "lottie-react";
 import loading from "@/public/animation/loading.json";
 import AddToCart from "../Button/AddToCart";
+import AddToFavourite from "../Button/AddToFavourite";
 
 interface Movie {
   poster_path: string;
@@ -95,8 +96,13 @@ export default function CarouselCard() {
                 {movie.adult ? "Rp55.000" : "Rp35.000"}
               </p>
 
-              {/* ADD TO CART */}
-             <AddToCart movie={movie} />
+              <div className="w-full mx-auto flex justify-evenly bg-blue-950 my-1">
+                {/* ADD TO CART */}
+                <AddToCart movie={movie} />
+
+                {/* ADD TO FAVORITE */}
+                <AddToFavourite />
+              </div>
             </Card>
           </CarouselItem>
         ))}
