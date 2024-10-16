@@ -33,7 +33,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ movie }) => {
   return (
     <div
       onClick={addToCart}
-      className="mx-auto w-fit md:px-4 lg:py-3 lg:px-5 flex justify-center items-center
+      className="mx-auto w-full px-4 py-2 md:px-4 md:py-2 lg:py-3 lg:px-2 flex justify-center items-center
                 rounded-xl bg-green-400 cursor-pointer hover:bg-green-500 active:bg-green-600 active:ring active:ring-green-800"
     >
       <p className="font-lato font-extrabold text-white text-xs md:text-sm tracking-wider">

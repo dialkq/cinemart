@@ -12,7 +12,7 @@ const GenreTabs: React.FC<GenreTabsProps> = ({ genre }) => {
   const currentGenre = genre.toLowerCase();
   const isActive = pathname === `/${currentGenre}`;
 
-  const tabStyles = `hover:bg-black dark:hover:bg-sky-200 
+  const tabStyles = `hover:bg-black dark:hover:bg-sky-200
    text-sm md:text-base py-2 md:py-3 rounded-md
   ${isActive ? "bg-black dark:bg-sky-200" : "bg-slate-800 dark:bg-sky-50"}`;
 

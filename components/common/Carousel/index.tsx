@@ -65,7 +65,7 @@ export default function CarouselCard() {
       className="w-full mx-auto my-4 md:my-5 lg:my-6"
     >
       <CarouselContent className="">
-        {data.results.slice(0, 12).map((movie: Movie, index: number) => (
+        {data.results.slice(0, 6).map((movie: Movie, index: number) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <Card className="flex flex-col bg-transparent border-none shadow-transparent py-1 px-8 md:py-2 md:px-8 lg:py-3 lg:px-12">
               <CardContent className="flex cursor-pointer p-0">
@@ -96,12 +96,12 @@ export default function CarouselCard() {
                 {movie.adult ? "Rp55.000" : "Rp35.000"}
               </p>
 
-              <div className="w-full mx-auto flex justify-evenly bg-blue-950 my-1">
+              <div className="w-fit mx-auto flex my-4">
                 {/* ADD TO CART */}
                 <AddToCart movie={movie} />
 
                 {/* ADD TO FAVORITE */}
-                <AddToFavourite />
+                <AddToFavourite movie={movie} />
               </div>
             </Card>
           </CarouselItem>
