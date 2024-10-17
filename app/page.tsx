@@ -35,6 +35,7 @@ export default function Home() {
             <GenreTabs key={genre} genre={genre} />
           ))}
         </div>
+        {/* NOW PLAYING CAROUSEL */}
         <div className="w-11/12 md:w-9/12 lg:w-10/12 my-3 md:my-5 lg:my-10 mx-auto">
           <p className="text-center font-cinzel text-3xl md:text-4xl lg:text-5xl">
             Now Playing
