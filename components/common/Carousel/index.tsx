@@ -18,6 +18,7 @@ import AddToCart from "../Button/AddToCart";
 import AddToFavourite from "../Button/AddToFavourite";
 
 interface Movie {
+  id: number;
   poster_path: string;
   title: string;
   adult: boolean;
@@ -101,7 +102,7 @@ export default function CarouselCard() {
                 <AddToCart movie={movie} />
 
                 {/* ADD TO FAVORITE */}
-                <AddToFavourite movie={movie} />
+                <AddToFavourite movie={movie}  />
               </div>
             </Card>
           </CarouselItem>

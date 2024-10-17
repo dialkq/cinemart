@@ -31,13 +31,14 @@ const MovieCard = () => {
   );
 
   const fetchMovies = async (page: number) => {
+    const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
+
     const res = await axios.get<ApiResponse>(
       `api/3/discover/movie?include_adult=true&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=28`,
       {
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ODg3MjZiOWQzNzdjMjI1ZmNmNzhhZjEwMTI0YTA4OCIsInN1YiI6IjY1ZGFjMDY0YWUyODExMDE3YzRjMzkwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NPd90WmkTBur276VZ6-xXX1BWtxMmx77d9DIIBw1cm0",
+          Authorization: `Bearer ${BEARER_TOKEN}`,
         },
       }
     );

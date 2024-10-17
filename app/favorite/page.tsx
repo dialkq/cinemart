@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Favorite() {
-  const genres = ["Popular Movie", "Favorite"].sort();
+  const genres = ["Popular", "Favorite"].sort();
   const router = useRouter();
 
   useEffect(() => {

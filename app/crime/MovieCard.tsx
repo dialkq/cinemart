@@ -7,6 +7,7 @@ import loading from "@/public/animation/loading.json";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import AddToCart from "@/components/common/Button/AddToCart";
+import { auth } from "../firebase/googleConfig";
 
 interface Movie {
   poster_path: string;
@@ -25,12 +26,13 @@ interface ApiResponse {
 const MovieCard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const fetchMovies = async ({ pageParam = 1 }) => {
+    const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
+    
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ODg3MjZiOWQzNzdjMjI1ZmNmNzhhZjEwMTI0YTA4OCIsInN1YiI6IjY1ZGFjMDY0YWUyODExMDE3YzRjMzkwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NPd90WmkTBur276VZ6-xXX1BWtxMmx77d9DIIBw1cm0",
+        authorization: `Bearer ${BEARER_TOKEN}`,
       },
     };
 

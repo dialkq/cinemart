@@ -28,13 +28,13 @@ const MovieCard = () => {
 
   // Fetch movies from the API
   const fetchMovies = async (page: number) => {
+    const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
     setLoading(true);
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ODg3MjZiOWQzNzdjMjI1ZmNmNzhhZjEwMTI0YTA4OCIsInN1YiI6IjY1ZGFjMDY0YWUyODExMDE3YzRjMzkwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NPd90WmkTBur276VZ6-xXX1BWtxMmx77d9DIIBw1cm0",
+        Authorization: `Bearer ${BEARER_TOKEN}`,
       },
     };
 

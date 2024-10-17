@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import axios from "axios";
 
 interface AddToFavouriteProps {
   movie: {
+    id: number; // Tambahkan id di sini
     poster_path: string;
     title: string;
     adult: boolean;
@@ -11,29 +13,55 @@ interface AddToFavouriteProps {
 
 const AddToFavourite = ({ movie }: AddToFavouriteProps) => {
   const [isFavorited, setIsFavorited] = useState(false);
+  const API_URL = "https://api.themoviedb.org/3/account/21029898/favorite";
+  const BEARER_TOKEN = process.env.NEXT_PUBLIC_BEARER_TOKEN;
 
   useEffect(() => {
     const favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies") || "[]");
     const isMovieFavorited = favoriteMovies.some(
-      (favorite: any) => favorite.title === movie.title
+      (favorite: any) => favorite.id === movie.id
     );
     setIsFavorited(isMovieFavorited);
-  }, [movie.title]);
+  }, [movie.id]);
 
-  const handleFavoriteClick = () => {
-    const favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies") || "[]");
-    let updatedFavorites;
+  const handleFavoriteClick = async () => {
+    try {
+      const payload = {
+        media_type: "movie",
+        media_id: movie.id,
+        favorite: !isFavorited, // Toggle favorite state
+      };
 
-    if (isFavorited) {
-      updatedFavorites = favoriteMovies.filter(
-        (favorite: any) => favorite.title !== movie.title
+      const response = await axios.post(
+        API_URL,
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${BEARER_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
-    } else {
-      updatedFavorites = [...favoriteMovies, movie];
-    }
 
-    localStorage.setItem("favoriteMovies", JSON.stringify(updatedFavorites));
-    setIsFavorited(!isFavorited); 
+      if (response.status === 201 || response.status === 200) {
+        setIsFavorited(!isFavorited);
+
+        const favoriteMovies = JSON.parse(localStorage.getItem("favoriteMovies") || "[]");
+
+        let updatedFavorites;
+        if (!isFavorited) {
+          updatedFavorites = [...favoriteMovies, movie];
+        } else {
+          updatedFavorites = favoriteMovies.filter(
+            (favorite: any) => favorite.id !== movie.id
+          );
+        }
+
+        localStorage.setItem("favoriteMovies", JSON.stringify(updatedFavorites));
+      }
+    } catch (error) {
+      console.error("Failed to update favorite status", error);
+    }
   };
 
   return (
